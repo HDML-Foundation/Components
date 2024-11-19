@@ -1,0 +1,13 @@
+.vscode
+coverage
+docs
+bin
+cjs
+dts
+esm
+tst
+tsconfig/*.tsbuildinfo
+node_modules
+npm-debug.log
+*.bak
+npm-debug.log

@@ -1,0 +1,9 @@
+{
+  "extends": "./esm.json",
+  "exclude": [],
+  "compilerOptions": {
+    "rootDir": "../src",
+    "baseUrl": "../src",
+    "outDir": "../tst"
+  }
+}

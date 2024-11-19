@@ -1,0 +1,29 @@
+{
+  "include": [
+    "../src/**/*.ts"
+  ],
+  "exclude": ["../src/**/*.test.ts"],
+  "compilerOptions": {
+    "lib": [ "esnext", "esnext.intl", "esnext.asynciterable", "DOM", "DOM.Iterable" ],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "emitDeclarationOnly": false,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "removeComments": false,
+    "declarationMap": false,
+    "importHelpers": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "incremental": true,
+    "composite": false,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": false,
+    "types": ["mocha"]
+  }
+}
