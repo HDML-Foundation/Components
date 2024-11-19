@@ -1,7 +1,5 @@
 import { tmp } from "./index";
-
-import { fixture, assert } from "@open-wc/testing";
-import { html } from "lit/static-html.js";
+import { assert } from "@open-wc/testing";
 
 suite("index.ts", () => {
   test("tmp", () => {
