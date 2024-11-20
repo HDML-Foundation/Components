@@ -1,5 +1,7 @@
-export function tmp(): void {
-  console.log("tmp");
-}
+/**
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
 
-tmp();
+import "./hdom/HdmlConnection";

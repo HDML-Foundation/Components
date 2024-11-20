@@ -11,7 +11,7 @@
   "customizations": {
     "vscode": {
       "settings": {},
-      "extensions": ["ms-azuretools.vscode-docker", "gaborv.flatbuffers", "golang.go", "dbaeumer.vscode-eslint", "firsttris.vscode-jest-runner", "rvest.vs-code-prettier-eslint", "runem.lit-plugin", "github.vscode-github-actions"]
+      "extensions": ["ms-azuretools.vscode-docker", "gaborv.flatbuffers", "golang.go", "dbaeumer.vscode-eslint", "firsttris.vscode-jest-runner", "rvest.vs-code-prettier-eslint", "runem.lit-plugin", "github.vscode-github-actions", "matsuuu.custom-elements-language-server-project"]
     }
   }
 }

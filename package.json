@@ -7,10 +7,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@hdml/types": "^0.0.2-alpha.2",
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.6.3",
+    "@custom-elements-manifest/analyzer": "^0.10.3",
     "@open-wc/testing": "^4.0.0",
     "@types/mocha": "^10.0.9",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
@@ -33,6 +34,7 @@
   },
   "scripts": {
     "clear": "rm -rf bin && rm -rf tst && rm -rf cjs && rm -rf dts && rm -rf esm && rm -rf tsconfig/*.tsbuildinfo && rm -rf coverage && rm -rf docs",
+    "manifest": "node_modules/.bin/cem analyze --litelement --globs \"src/**/*.ts\" --exclude \"src/index.ts\"",
     "docs": "node_modules/.bin/typedoc ./src/index.ts --tsconfig ./tsconfig/esm.json --out ./docs",
     "lint": "node ./node_modules/.bin/eslint -c .eslintrc.js --fix --parser-options=tsconfigRootDir:'./tsconfig' 'src/**/*.ts'",
     "tst_dev": "wtr --config .testrc.js",
@@ -51,5 +53,5 @@
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "dts/index.d.ts",
-  "customElements": "hdml-elements.json"
+  "customElements": "custom-elements.json"
 }
