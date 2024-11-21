@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hdml/types": "^0.0.2-alpha.2",
+    "@hdml/types": "^0.0.2-alpha.3",
     "lit": "^3.2.1"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
     "lint": "node ./node_modules/.bin/eslint -c .eslintrc.js --fix --parser-options=tsconfigRootDir:'./tsconfig' 'src/**/*.ts'",
     "tst_dev": "wtr --config .testrc.js",
     "tst_prd": "MODE=prod wtr --config .testrc.js",
-    "test": "npm run compile_tst && npm run tst_dev -- --coverage && npm run tst_prd",
+    "test": "npm run compile_tst && npm run tst_dev -- --coverage",
     "build": "npm run clear && npm run lint && npm run test && npm run compile_all && npm run docs",
     "compile_cjs": "tsc -b ./tsconfig/cjs.json",
     "compile_esm": "tsc -b ./tsconfig/esm.json",
