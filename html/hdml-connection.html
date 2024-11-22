@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HDML Connection Test Page</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../esm/index.js"></script>
+    <script>
+      document.addEventListener("hdom-changed", console.log);
+    </script>
+  </head>
+  <body>
+    <h1>HDML Connection Test Page</h1>
+
+    <hdml-connection
+      name="name1"
+      type="postgresql"
+      description="PgSQL connection."
+      ssl="false"
+      host="localhost"
+      user="username"
+      password="password">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name2"
+      type="mysql"
+      description="MySQL connection."
+      ssl="false"
+      host="localhost"
+      user="username"
+      password="password">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name3"
+      type="bigquery"
+      description="BigQuery connection."
+      credentials-key="credentials-key-123"
+      project-id="project-id-123">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name4"
+      type="googlesheets"
+      description="GoogleSheets connection."
+      credentials-key="credentials-key-123"
+      sheet-id="meta-sheet-id">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name5"
+      type="elasticsearch"
+      description="ElasticSearch connection."
+      ssl="false"
+      host="localhost"
+      port="9200"
+      user="username"
+      password="password"
+      region="noth-virginia"
+      access-key="access-key-123"
+      secret-key="secret-key-123">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name6"
+      type="mongodb"
+      description="MongoDB connection."
+      ssl="false"
+      host="localhost"
+      port="9200"
+      user="username"
+      password="password"
+      schema="schema">
+    </hdml-connection>
+
+    <hdml-connection
+      name="name7"
+      type="snowflake"
+      description="Snowflake connection."
+      account="account"
+      user="username"
+      role="role"
+      password="password"
+      warehouse="warehouse"
+      database="database">
+    </hdml-connection>
+  </body>
+</html>

@@ -5,3 +5,4 @@
  */
 
 import "./hdom/HdmlConnection";
+import "./hdom/HdmlModel";
