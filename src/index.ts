@@ -6,3 +6,4 @@
 
 import "./hdom/HdmlConnection";
 import "./hdom/HdmlModel";
+import "./hdom/HdmlTable";
