@@ -8,7 +8,7 @@ import { HdmlModel } from "./HdmlModel";
 import { fixture, assert } from "@open-wc/testing";
 import { html } from "lit/static-html.js";
 
-suite("HdmlConnection element", () => {
+suite("HdmlModel element", () => {
   test("is defined", () => {
     const el = document.createElement("hdml-model");
     assert.instanceOf(el, HdmlModel);

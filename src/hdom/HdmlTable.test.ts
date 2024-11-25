@@ -8,7 +8,7 @@ import { HdmlTable } from "./HdmlTable";
 import { fixture, assert } from "@open-wc/testing";
 import { html } from "lit/static-html.js";
 
-suite("HdmlConnection element", () => {
+suite("HdmlTable element", () => {
   test("is defined", () => {
     const el = document.createElement("hdml-table");
     assert.instanceOf(el, HdmlTable);

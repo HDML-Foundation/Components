@@ -7,3 +7,4 @@
 import "./hdom/HdmlConnection";
 import "./hdom/HdmlModel";
 import "./hdom/HdmlTable";
+import "./hdom/HdmlField";
