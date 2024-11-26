@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HDML Model Test Page</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../esm/index.js"></script>
+    <script>
+      document.addEventListener("hdom-changed", console.log);
+    </script>
+  </head>
+  <body>
+    <h1>HDML Join Test Page</h1>
+
+    <hdml-join
+      type="type"
+      left="left"
+      right="right"
+      description="description">
+    </hdml-join>
+  </body>
+</html>
