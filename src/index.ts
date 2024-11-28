@@ -10,3 +10,4 @@ import "./hdom/HdmlTable";
 import "./hdom/HdmlField";
 import "./hdom/HdmlJoin";
 import "./hdom/HdmlConnective";
+import "./hdom/HdmlFilter";

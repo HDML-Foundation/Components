@@ -26,7 +26,8 @@ import { HdomElement } from "./HdomElement";
  *
  * @attribute {string} operator - Specifies the logical operator to
  * connect filters. Supported values include `and` for logical `AND`
- * operator and `or` for logical `OR` operator.
+ * operator, `or` for logical `OR` operator and `none` if no operator
+ * needed.
  */
 @customElement(HDML_TAG_NAMES.CONNECTIVE)
 export class HdmlConnective extends HdomElement {
