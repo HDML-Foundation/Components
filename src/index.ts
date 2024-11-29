@@ -12,3 +12,4 @@ import "./hdom/HdmlJoin";
 import "./hdom/HdmlConnective";
 import "./hdom/HdmlFilter";
 import "./hdom/HdmlFrame";
+import "./hdom/HdmlFilterBy";
