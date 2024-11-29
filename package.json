@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hdml/types": "^0.0.2-alpha.4",
+    "@hdml/types": "^0.0.2-alpha.5",
     "lit": "^3.2.1"
   },
   "devDependencies": {
