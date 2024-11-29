@@ -14,3 +14,4 @@ import "./hdom/HdmlFilter";
 import "./hdom/HdmlFrame";
 import "./hdom/HdmlFilterBy";
 import "./hdom/HdmlGroupBy";
+import "./hdom/HdmlSortBy";
