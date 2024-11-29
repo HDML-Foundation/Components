@@ -11,3 +11,4 @@ import "./hdom/HdmlField";
 import "./hdom/HdmlJoin";
 import "./hdom/HdmlConnective";
 import "./hdom/HdmlFilter";
+import "./hdom/HdmlFrame";
