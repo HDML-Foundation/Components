@@ -4,6 +4,8 @@
  * @license Apache-2.0
  */
 
+import "./hdio/HdmlIo";
+
 import "./hdom/HdmlConnection";
 import "./hdom/HdmlModel";
 import "./hdom/HdmlTable";
