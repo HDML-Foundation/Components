@@ -54,6 +54,11 @@ async function build() {
     format: "iife",
     plugins: [buildWorkerPlugin()],
   });
+  console.log(
+    `[${new Date().getHours()}:` +
+    `${new Date().getMinutes()}:` +
+    `${new Date().getSeconds()}] Bundle created.`,
+  );
 }
 
 await build();

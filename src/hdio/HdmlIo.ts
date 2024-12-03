@@ -42,13 +42,17 @@ export class HdmlIo extends LitElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
-    // logic here
-    console.log(_script);
-    const blob = new Blob([_script], { type: "text/javascript" });
-    const url = URL.createObjectURL(blob);
-    const worker = new Worker(url);
-    URL.revokeObjectURL(url);
-    worker.postMessage("test message");
+
+    let messagable: Window | Worker;
+    if (_script === "_script") {
+      messagable = globalThis.self;
+    } else {
+      const blob = new Blob([_script], { type: "text/javascript" });
+      const url = URL.createObjectURL(blob);
+      messagable = new Worker(url);
+      URL.revokeObjectURL(url);
+    }
+    messagable.postMessage("test message");
   }
 
   /**
