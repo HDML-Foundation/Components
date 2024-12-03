@@ -2,10 +2,11 @@ import fs from "fs";
 import path from "path";
 import * as esbuild from "esbuild"
 import findCacheDir from "find-cache-dir";
+import * as watch from "node-watch";
+import { argv } from "process";
 
 function buildWorkerPlugin() {
   async function buildWorker(workerPath) {
-    console.log("1!!!", workerPath);
     const cacheDir = findCacheDir({
       name: "esbuild-worker",
       create: true,
@@ -30,7 +31,6 @@ function buildWorkerPlugin() {
           filter: /\.worker\.js$/,
         },
         async ({ path: workerPath }) => {
-          console.log("2!!!", workerPath);
           let workerCode = await buildWorker(workerPath);
           return {
             contents:
@@ -44,12 +44,20 @@ function buildWorkerPlugin() {
   };
 }
 
-await esbuild.build({
-  entryPoints: ["./esm/index.js"],
-  outfile: "./bin/index.min.js",
-  bundle: true,
-  minify: true,
-  sourcemap: true,
-  format: "iife",
-  plugins: [buildWorkerPlugin()],
-});
+async function build() {
+  await esbuild.build({
+    entryPoints: ["./esm/index.js"],
+    outfile: "./bin/index.min.js",
+    bundle: true,
+    minify: true,
+    sourcemap: true,
+    format: "iife",
+    plugins: [buildWorkerPlugin()],
+  });
+}
+
+await build();
+
+if(argv[2] === "--watch") {
+  watch.default(path.resolve("./esm"), { recursive: true }, build);
+}
