@@ -4,6 +4,7 @@
  * @license Apache-2.0
  */
 
+import { throdeb } from "@hdml/common";
 import { LitElement, TemplateResult, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import _script from "./HdmlWorker.worker";
@@ -37,22 +38,78 @@ export class HdmlIo extends LitElement {
   @property({ type: String })
   token: null | string = null;
 
+  #messagable: null | Window | Worker = null;
+
+  #enableMessagable = () => {
+    if (_script === "_script") {
+      this.#messagable = globalThis.self;
+    } else {
+      const blob = new Blob([_script], { type: "text/javascript" });
+      const url = URL.createObjectURL(blob);
+      this.#messagable = new Worker(url);
+      URL.revokeObjectURL(url);
+    }
+    this.#sendProps();
+    this.#sendHtml();
+  };
+
+  #disableMessagable = () => {
+    if (_script === "_script") {
+      this.#messagable = null;
+    } else {
+      (<Worker>this.#messagable).terminate();
+    }
+  };
+
+  #sendProps = throdeb.debounce(5, () => {
+    this.#messagable?.postMessage({
+      type: "props",
+      data: {
+        host: this.host,
+        tenant: this.tenant,
+        token: this.token,
+      },
+    });
+  });
+
+  #listenHdomChanges = () => {
+    document.addEventListener("hdom-changed", this.#sendHtml);
+  };
+
+  #unlistenHdomChanges = () => {
+    document.removeEventListener("hdom-changed", this.#sendHtml);
+  };
+
+  #sendHtml = throdeb.debounce(5, () => {
+    const connections: string[] = [];
+    const models: string[] = [];
+    const frames: string[] = [];
+    document.querySelectorAll("hdml-connection").forEach((elm) => {
+      connections.push(elm.outerHTML);
+    });
+    document.querySelectorAll("hdml-model").forEach((elm) => {
+      models.push(elm.outerHTML);
+    });
+    document.querySelectorAll("hdml-frame").forEach((elm) => {
+      frames.push(elm.outerHTML);
+    });
+    this.#messagable?.postMessage({
+      type: "html",
+      data: {
+        connections,
+        models,
+        frames,
+      },
+    });
+  });
+
   /**
    * @override
    */
   public connectedCallback(): void {
     super.connectedCallback();
-
-    let messagable: Window | Worker;
-    if (_script === "_script") {
-      messagable = globalThis.self;
-    } else {
-      const blob = new Blob([_script], { type: "text/javascript" });
-      const url = URL.createObjectURL(blob);
-      messagable = new Worker(url);
-      URL.revokeObjectURL(url);
-    }
-    messagable.postMessage("test message");
+    this.#enableMessagable();
+    this.#listenHdomChanges();
   }
 
   /**
@@ -64,14 +121,15 @@ export class HdmlIo extends LitElement {
     value: string,
   ): void {
     super.attributeChangedCallback(name, old, value);
-    // logic here
+    this.#sendProps();
   }
 
   /**
    * @override
    */
   public disconnectedCallback(): void {
-    // logic here
+    this.#unlistenHdomChanges();
+    this.#disableMessagable();
     super.disconnectedCallback();
   }
 

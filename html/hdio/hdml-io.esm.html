@@ -12,5 +12,28 @@
     <h1>HDML Input-Output Test Page (esm)</h1>
 
     <hdml-io host="host" tenant="tenant" token="token"></hdml-io>
+
+    <hdml-connection
+      name="name1"
+      type="postgresql"
+      description="PgSQL connection."
+      ssl="false"
+      host="localhost"
+      user="username"
+      password="password">
+    </hdml-connection>
+
+    <hdml-model
+      name="name"
+      description="description">
+    </hdml-model>
+
+    <hdml-frame
+      name="name"
+      description="description"
+      source="source"
+      offset="0"
+      limit="5000">
+    </hdml-frame>
   </body>
 </html>

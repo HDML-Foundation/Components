@@ -4,13 +4,34 @@
   <head>
     <meta charset="utf-8" />
     <title>HDML Model Test Page (bin)</title>
-    <script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../node_modules/lit/polyfill-support.js"></script>
-    <script src="../../bin/index.min.js"></script>
+    <script defer src="../../bin/index.min.js"></script>
   </head>
   <body>
     <h1>HDML Input-Output Test Page (bin)</h1>
 
     <hdml-io host="host" tenant="tenant" token="token"></hdml-io>
+
+    <hdml-connection
+      name="name1"
+      type="postgresql"
+      description="PgSQL connection."
+      ssl="false"
+      host="localhost"
+      user="username"
+      password="password">
+    </hdml-connection>
+
+    <hdml-model
+      name="name"
+      description="description">
+    </hdml-model>
+
+    <hdml-frame
+      name="name"
+      description="description"
+      source="source"
+      offset="0"
+      limit="5000">
+    </hdml-frame>
   </body>
 </html>
