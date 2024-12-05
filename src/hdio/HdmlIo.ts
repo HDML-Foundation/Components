@@ -7,7 +7,7 @@
 import { throdeb } from "@hdml/common";
 import { LitElement, TemplateResult, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import _script from "./HdmlWorker.worker";
+import _script from "./HdmlIo.worker";
 
 /**
  * The `hdml-io` component.
@@ -81,24 +81,22 @@ export class HdmlIo extends LitElement {
   };
 
   #sendHtml = throdeb.debounce(5, () => {
-    const connections: string[] = [];
-    const models: string[] = [];
-    const frames: string[] = [];
+    let connections: string = "";
+    let models: string = "";
+    let frames: string = "";
     document.querySelectorAll("hdml-connection").forEach((elm) => {
-      connections.push(elm.outerHTML);
+      connections = connections + `${elm.outerHTML}\n`;
     });
     document.querySelectorAll("hdml-model").forEach((elm) => {
-      models.push(elm.outerHTML);
+      models = models + `${elm.outerHTML}\n`;
     });
     document.querySelectorAll("hdml-frame").forEach((elm) => {
-      frames.push(elm.outerHTML);
+      frames = frames + `${elm.outerHTML}\n`;
     });
     this.#messagable?.postMessage({
       type: "html",
       data: {
-        connections,
-        models,
-        frames,
+        html: `${connections}${models}${frames}`,
       },
     });
   });
